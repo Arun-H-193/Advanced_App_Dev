@@ -1,9 +1,10 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 const Contact = () => {
   return (
     <>
-    <div className="container mx-auto px-4 py-8 flex flex-col justify-center items-center h-screen w-500">
+    <div className="flex items-center justify-center h-screen">
+    <div className="container mx-auto px-4 py-8 flex flex-col justify-center items-center h-[500px] w-[400px] border border-black rounded-xl">
       <h1 className="text-3xl font-bold mb-4 text-center">Contact Us</h1>
       <form className="max-w-lg mx-auto">
         <div className="mb-4">
@@ -19,9 +20,10 @@ const Contact = () => {
           <textarea id="message" name="message" rows="4" className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="Your Message"></textarea>
         </div>
         <div className="text-center">
-          <button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-md font-semibold hover:bg-blue-600">Send</button>
+          <Link to='/'><button type="submit" className="bg-blue-500 text-white py-2 px-6 rounded-md font-semibold hover:bg-blue-600">Send</button></Link>
         </div>
       </form>
+    </div>
     </div>
     </>
   );

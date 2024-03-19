@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 .active{
-    color:white
+    color:black;
+    border-bottom: 2px solid black;
 }

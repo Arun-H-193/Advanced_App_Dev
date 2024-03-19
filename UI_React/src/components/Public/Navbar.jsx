@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { HouseDoor, Envelope, PersonCircle } from 'react-bootstrap-icons'; // Importing Bootstrap icons
+import { HouseDoor, Envelope, PersonCircle, Bank, Cast, CaretDown } from 'react-bootstrap-icons'; // Importing Bootstrap icons
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,21 +16,21 @@ const Navbar = () => {
       icon: <HouseDoor size={20} />, // Bootstrap Home Icon
     },
     {
-      name: 'Contact',
-      path: '/contact',
-      icon: <Envelope size={20} />, // Bootstrap Contact Icon
-    },
+        name: 'Contact',
+        path: '/contact',
+        icon: <Envelope size={20} />, // Bootstrap Contact Icon
+      },
     {
-      name: 'Login',
+      name: 'login or signup',
       path: '/login',
-      icon: <PersonCircle size={20} />, // Bootstrap Login Icon
+      icon: <PersonCircle size={20} />
     }
   ];
 
   return (
-    <div className="relative bg-gray-400 h-[10vh] w-screen">
+    <div className="relative bg-white-400 h-[10vh] w-80vw py-[10px]">
       <div className="absolute inset-x-0 top-0 flex justify-between items-center px-4 py-3 shadow-lg transition-all duration-300 ease-in-out">
-        <div className="text-black">Quiz App</div>
+        <div className="text-3xl font-bold">Quiz App</div>
         <div className="md:hidden">
           <button
             onClick={toggleMenu}
@@ -63,36 +63,45 @@ const Navbar = () => {
         </div>
         <nav className="hidden md:flex flex-grow justify-end items-center space-x-4">
           {links.map((link, index) => (
-            <NavLink
-              key={index}
-              to={link.path}
-              activeClassName="shadow-md font-bold"
-              className="text-black flex items-center hover:bg-gray-300 px-3 py-2 rounded-md transition-all duration-300 ease-in-out"
-            >
-              {link.icon}
-              <span className="ml-2">{link.name}</span>
-            </NavLink>
+            <React.Fragment key={index}>
+              {link.dropdown ? (
+                <div className="relative">
+                  <button onClick={toggleMenu} className="text-black flex items-center hover:bg-gray-300 px-3 py-2 rounded-md transition-all duration-300 ease-in-out">
+                    {link.icon}
+                    <span className="ml-2">{link.name}</span>
+                    <CaretDown size={20} />
+                  </button>
+                  {isOpen && (
+                    <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md w-40">
+                      {link.dropdown.map((sublink, subIndex) => (
+                        <NavLink
+                          key={subIndex}
+                          to={sublink.path}
+                          activeClassName="font-bold"
+                          className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200 transition duration-300 ease-in-out"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {sublink.name}
+                        </NavLink>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <NavLink
+                  to={link.path}
+                  activeClassName="shadow-md font-bold"
+                  className="text-black flex items-center hover:bg-gray-300 px-3 py-2 rounded-md transition-all duration-300 ease-in-out"
+                >
+                  {link.icon}
+                  <span className="ml-2">{link.name}</span>
+                </NavLink>
+              )}
+            </React.Fragment>
           ))}
         </nav>
       </div>
-      <div
-        className={`${
-          isOpen ? 'block' : 'hidden'
-        } absolute top-[5vh] inset-x-0 bg-gray-400 px-4 py-2 md:hidden`}
-      >
-        {links.map((link, index) => (
-          <NavLink
-            key={index}
-            to={link.path}
-            activeClassName="shadow-md font-bold"
-            className="block text-black flex items-center hover:bg-gray-300 py-2 rounded-md transition-all duration-300 ease-in-out"
-            onClick={toggleMenu}
-          >
-            {link.icon}
-            <span className="ml-2">{link.name}</span>
-          </NavLink>
-        ))}
-      </div>
+      
     </div>
   );
 };
