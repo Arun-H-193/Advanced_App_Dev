@@ -19,6 +19,8 @@ import Institutes from "./pages/Admin/Institutespage"
 import SharedWeblayout from "./layout/SharedWeblayout"
 import MyCourses from "./pages/User/MyCourses"
 import Loader from "./components/Public/Loader"
+import DashboardStats from "./pages/Admin/Admindashboard"
+import AdminProfilePage from "./pages/Admin/AdminProfile"
 
 
 function App() {
@@ -45,9 +47,11 @@ function App() {
           <Route path='/userdashboard' element={<UserDashboard/>}></Route>
         </Route>
         <Route element={<Adminweblayout/>}>
+            <Route path="/admin/dashboard" element={<DashboardStats/>}></Route>
             <Route path="/admin/courses" element={<CoursesPage/>}></Route>
             <Route path="/admin/institutes" element={<Institutes/>}></Route>
             <Route path="/admin/students" element={<StudentsPage/>}></Route>
+            <Route path="/admin/config" element={<AdminProfilePage/>}></Route>
         </Route>
       </Routes>
       </Suspense>

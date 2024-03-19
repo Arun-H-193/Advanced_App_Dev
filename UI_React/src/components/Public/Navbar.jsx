@@ -30,7 +30,7 @@ const Navbar = () => {
   return (
     <div className="relative bg-white-400 h-[10vh] w-80vw py-[10px]">
       <div className="absolute inset-x-0 top-0 flex justify-between items-center px-4 py-3 shadow-lg transition-all duration-300 ease-in-out">
-        <div className="text-3xl font-bold">Quiz App</div>
+        <div className="text-3xl font-bold">Grandmaster Gateway</div>
         <div className="md:hidden">
           <button
             onClick={toggleMenu}

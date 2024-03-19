@@ -12,7 +12,7 @@ export const Login = () => {
     if (email === 'user@gmail.com' && password === 'user123') {
       navigate('/userdashboard');
     } else if (email === 'admin@gmail.com' && password === 'admin123') {
-      navigate('/admin/courses');
+      navigate('/admin/dashboard');
     } else {
       // Handle invalid credentials
       alert('Invalid email or password');
