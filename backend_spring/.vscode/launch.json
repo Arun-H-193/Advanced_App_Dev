@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GrandmasterApplication<grandmaster>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.grandmaster.grandmaster.GrandmasterApplication",
+            "projectName": "grandmaster",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

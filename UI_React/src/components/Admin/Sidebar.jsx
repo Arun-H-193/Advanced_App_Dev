@@ -27,6 +27,10 @@ const Sidebar = () => {
       title: 'Students',
       path: '/admin/students',
     },
+    {
+      title: 'Config',
+      path: '/admin/config',
+    },
   ];
 
   return (

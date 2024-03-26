@@ -50,8 +50,8 @@ const MyCourses = () => {
                     <span className="font-bold">Email:</span> {course.email}
                   </div>
                   <div className="flex justify-between">
-                    <button onClick={() => handleEdit(course.id)} className="bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 mr-2">Edit</button>
-                    <button onClick={() => handleDelete(course.id)} className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Delete</button>
+                    <button onClick={() => handleEdit(course.id)} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-yellow-600 mr-2">Edit</button>
+                    <button onClick={() => handleDelete(course.id)} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-red-600">Delete</button>
                   </div>
                 </div>
               ))}

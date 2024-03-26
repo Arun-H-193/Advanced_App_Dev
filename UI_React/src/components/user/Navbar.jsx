@@ -33,6 +33,7 @@ const Navbar = () => {
       icon: <PersonCircle size={20} />,
       dropdown: [
         
+        { name: 'My Courses', path:'/mycourses'},
         { name: 'Profile', path:'/profile'},
         { name: 'Logout', path: '/login' },
       ]

@@ -19,7 +19,7 @@ export const SignUp = () => {
             <label htmlFor="password" className="text-gray-700 text-left mb-2">Password</label>
             <input id="password" className="input-field w-[275px] h-[30px] rounded-lg border border-black-300 mb-4" type="password" placeholder="Password" />
           </div>
-          <Link to='/login'><button className="btn-login">Sign Up</button></Link>
+          <Link to='/login'><button className="btn-login bg-black text-white h-[30px] w-[100px] rounded-lg">Sign Up</button></Link>
         </form>
         <div className="text-gray-600">Already have an account? <Link to='/login' className="text-blue-500 font-semibold">Login</Link></div>
       </div>

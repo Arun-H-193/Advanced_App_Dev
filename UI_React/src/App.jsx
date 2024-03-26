@@ -19,10 +19,11 @@ import Institutes from "./pages/Admin/Institutespage"
 import SharedWeblayout from "./layout/SharedWeblayout"
 import MyCourses from "./pages/User/MyCourses"
 import Loader from "./components/Public/Loader"
-import DashboardStats from "./pages/Admin/Admindashboard"
 import AdminProfilePage from "./pages/Admin/AdminProfile"
+import Error404Page from "./components/Public/error"
 
 
+const DashboardStats = lazy(() => import('./pages/Admin/Admindashboard'))
 function App() {
 
   return (
@@ -53,6 +54,7 @@ function App() {
             <Route path="/admin/students" element={<StudentsPage/>}></Route>
             <Route path="/admin/config" element={<AdminProfilePage/>}></Route>
         </Route>
+        <Route path="/error404" element={<Error404Page/>}></Route>
       </Routes>
       </Suspense>
       </BrowserRouter>
