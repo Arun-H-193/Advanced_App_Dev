@@ -16,6 +16,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.grandmaster.grandmaster.enums.Role;
+
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 import static org.springframework.http.HttpMethod.DELETE;
@@ -54,7 +56,10 @@ public class SecurityConfig {
                         .csrf(AbstractHttpConfigurer::disable)
                         .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                         .authorizeHttpRequests(
-                                        authorize -> authorize.requestMatchers(PublicEndPoints).permitAll().anyRequest().authenticated())
+                                        authorize -> authorize.requestMatchers(PublicEndPoints).permitAll()
+                                        .requestMatchers("/api/users/**")
+                                        .hasRole(Role.Admin.name())
+                                        .anyRequest().authenticated())
                         .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                         .authenticationProvider(authenticationProvider)
                         .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

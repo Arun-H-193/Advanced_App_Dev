@@ -2,6 +2,7 @@ package com.grandmaster.grandmaster.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.grandmaster.grandmaster.enums.TokenType;
 
 import jakarta.persistence.CascadeType;
@@ -41,6 +42,7 @@ public class Token {
     private boolean revoked;
     private boolean expired;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_uid")
     private User user;
