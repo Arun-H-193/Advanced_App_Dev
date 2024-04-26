@@ -1,5 +1,3 @@
-// InstituteCard.jsx
-
 import React, { useState } from 'react';
 
 const InstituteCard = ({ institute, courses, onViewCourses }) => {
@@ -24,6 +22,10 @@ const InstituteCard = ({ institute, courses, onViewCourses }) => {
     <div className="bg-white rounded-lg shadow-md p-6">
       <h2 className="text-xl font-bold mb-2">{institute.name}</h2>
       <p className="text-gray-600 mb-2">Type: {institute.type}</p>
+      <p className="text-gray-600 mb-2">Location: {institute.location}</p>
+      <p className="text-gray-600 mb-2">Established: {institute.established}</p>
+      <p className="text-gray-600 mb-2">Contact Email: {institute.contact.email}</p>
+      <p className="text-gray-600 mb-2">Contact Phone: {institute.contact.phone}</p>
       {viewCourses ? (
         <div>
           <button onClick={() => setViewCourses(false)} className="text-blue-500 hover:underline mb-2">Back to Institutes</button>
@@ -39,6 +41,10 @@ const InstituteCard = ({ institute, courses, onViewCourses }) => {
               <div key={course.id} className="mb-4">
                 <h3 className="text-lg font-semibold mb-2">{course.name}</h3>
                 <p className="text-gray-600 mb-2">{course.description}</p>
+                <p className="text-gray-600 mb-2">Level: {course.level}</p>
+                <p className="text-gray-600 mb-2">Instructor: {course.instructor}</p>
+                <p className="text-gray-600 mb-2">Schedule: {course.schedule}</p>
+                <p className="text-gray-600 mb-2">Price: {course.price}</p>
                 {/* Add more course details as needed */}
               </div>
             ))}

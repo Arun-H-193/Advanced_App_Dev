@@ -1,6 +1,9 @@
 import React from 'react';
 import homeimage from '../assets/images/home.jpg';
 import { Link } from 'react-router-dom';
+import FAQ from '../components/Public/FAQ';
+import Team from '../components/Public/Team';
+import LogoPart from '../components/Public/Logopart';
 
 const Home = () => {
   // Dummy data for achievements
@@ -66,6 +69,9 @@ const Home = () => {
             </div>
           ))}
         </div>
+        <FAQ/>
+        <Team/>
+        <LogoPart/>
       </main>
     </div>
   );

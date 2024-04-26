@@ -27,7 +27,6 @@ public class UserServiceImpl implements UserService {
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .phone(registerRequest.getPhone())
                 .address(registerRequest.getAddress())
-                .role(registerRequest.getRole())
                 .build();
         return userRepository.save(user);
     }
@@ -40,7 +39,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(userUpdateRequest.getPassword()));
         user.setPhone(userUpdateRequest.getPhone());
         user.setAddress(userUpdateRequest.getAddress());
-        user.setRole(userUpdateRequest.getRole());
         return userRepository.save(user);
     }
 

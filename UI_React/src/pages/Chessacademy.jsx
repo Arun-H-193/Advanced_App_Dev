@@ -1,5 +1,6 @@
 import React from 'react';
 import homeimage from '../assets/images/home.jpg'
+import FAQ from '../components/Public/FAQ';
 
 const ChessAcademy = () => {
   return (
@@ -40,6 +41,7 @@ const ChessAcademy = () => {
             <a href="#" className="text-blue-600 hover:underline">Enroll Now</a>
           </div>
         </div>
+        <FAQ/>
       </main>
       
     </div>

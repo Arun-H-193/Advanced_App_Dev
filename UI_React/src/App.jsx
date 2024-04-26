@@ -21,7 +21,7 @@ import MyCourses from "./pages/User/MyCourses"
 import Loader from "./components/Public/Loader"
 import AdminProfilePage from "./pages/Admin/AdminProfile"
 import Error404Page from "./components/Public/error"
-
+import CourseDescriptionPage from "./pages/User/CoursePage"
 
 const DashboardStats = lazy(() => import('./pages/Admin/Admindashboard'))
 function App() {
@@ -46,6 +46,7 @@ function App() {
           <Route path='/mycourses' element={<MyCourses/>}></Route>
           <Route path='/institues' element={<InstitutesPage/>}></Route>
           <Route path='/userdashboard' element={<UserDashboard/>}></Route>
+          <Route path='/coursedesc' element={<CourseDescriptionPage/>}></Route>
         </Route>
         <Route element={<Adminweblayout/>}>
             <Route path="/admin/dashboard" element={<DashboardStats/>}></Route>

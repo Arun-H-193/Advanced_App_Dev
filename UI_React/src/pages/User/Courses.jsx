@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import coursesData from '../../components/user/Coursedata';
+import { Link } from 'react-router-dom';
 
 const Courses = () => {
   const [showEnrollmentForm, setShowEnrollmentForm] = useState(false);
@@ -37,8 +38,8 @@ const Courses = () => {
     };
 
     return (
-      <div className="fixed w-screen inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-        <div className="bg-white w-[500px] p-6 rounded-lg shadow-md">
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50 overflow-auto">
+        <div className="bg-white w-[500px] p-6 rounded-lg shadow-md mt-10">
           <h2 className="text-2xl font-semibold mb-4">Enrollment Form for {selectedCourse.name}</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -123,7 +124,7 @@ const Courses = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 min-h-screen overflow-auto">
       <div className="container mx-auto px-4 py-8">
         <h2 className="text-3xl font-semibold mb-4">Courses Available</h2>
         {/* Filters */}
@@ -136,6 +137,7 @@ const Courses = () => {
             <label className="block text-gray-700 font-bold">Filter by Duration:</label>
             <input type="text" name="duration" value={filters.duration} onChange={handleFilterChange} className="border border-gray-300 rounded px-4 py-2" placeholder="Enter duration" />
           </div>
+          {/* Add more filters here */}
         </div>
         {/* Course Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -147,7 +149,7 @@ const Courses = () => {
               <p><strong>Price:</strong> {course.price}</p>
               <p><strong>Institution:</strong> {course.institution}</p>
               <p><strong>Tutor:</strong> {course.tutor}</p>
-              <button onClick={() => handleEnrollClick(course)} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Enroll Now</button>
+              <Link to='/coursedesc'><button onClick={() => handleEnrollClick(course)} className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Enroll Now</button></Link>
             </div>
           ))}
         </div>

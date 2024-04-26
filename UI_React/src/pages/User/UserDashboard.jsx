@@ -31,7 +31,7 @@ const UserDashboard = () => {
                   <p className="text-gray-600 mb-2">5 min read</p>
                   <p className="mb-4">Master the Fundamentals of Chess</p>
                   <p className="text-gray-600">Learn the basics of chess and improve your gameplay.</p>
-                  <button className="px-4 py-2 bg-blue-500 text-white rounded-md">Read more &gt;</button>
+                  <Link to="/courses"><button className="px-4 py-2 bg-blue-500 text-white rounded-md ">Read more &gt;</button></Link>
                 </div>
               </div>
               <div className="card bg-white shadow-md rounded-md">
@@ -40,7 +40,7 @@ const UserDashboard = () => {
                   <p className="text-gray-600 mb-2">5 min read</p>
                   <p className="mb-4">Take Your Skills to the Next Level</p>
                   <p className="text-gray-600">Enhance your chess strategies and tactics with advanced courses.</p>
-                  <button className="px-4 py-2 bg-blue-500 text-white rounded-md">Read more &gt;</button>
+                  <Link to="/courses"><button className="px-4 py-2 bg-blue-500 text-white rounded-md">Read more &gt;</button></Link>
                 </div>
               </div>
               <div className="card bg-white shadow-md rounded-md">
@@ -49,7 +49,7 @@ const UserDashboard = () => {
                   <p className="text-gray-600 mb-2">5 min read</p>
                   <p className="mb-4">Become a Chess Grandmaster</p>
                   <p className="text-gray-600">Learn advanced chess techniques and compete at the highest level.</p>
-                  <button className="px-4 py-2 bg-blue-500 text-white rounded-md">Read more &gt;</button>
+                  <Link to="/courses"><button className="px-4 py-2 bg-blue-500 text-white rounded-md">Read more &gt;</button></Link>
                 </div>
               </div>
             </div>

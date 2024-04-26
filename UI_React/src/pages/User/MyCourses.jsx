@@ -23,10 +23,10 @@ const MyCourses = () => {
       };
     
       return (
-        <div className="bg-gray-100 min-h-screen">
+        <div className="bg-gray-100 min-h-screen overflow-y-auto">
           <div className="container mx-auto px-4 py-8">
             <h2 className="text-3xl font-semibold mb-4">Your Courses</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
               {courses.map(course => (
                 <div key={course.id} className="bg-white p-6 rounded-lg shadow-md">
                   <h3 className="text-xl font-semibold mb-2">{course.name}</h3>
