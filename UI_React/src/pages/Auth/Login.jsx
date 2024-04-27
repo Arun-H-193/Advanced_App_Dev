@@ -1,48 +1,43 @@
 import React, {useRef} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { SignIn } from '../../services/api';
-import toast, { Toaster } from 'react-hot-toast'
-import { jwtDecode } from 'jwt-decode'
+import toast, { Toaster } from 'react-hot-toast';
+import { authService } from '../../services/auth';
 
 export const Login = () => {
   const navigate = useNavigate()
-  const emailRef = useRef(null)
-    const passwordRef = useRef(null)
-    const handleLogin = async (e) => {
-        e.preventDefault()
-        try {
-            const res = await SignIn(emailRef.current.value, passwordRef.current.value)
-            if (res.status === 200) {
-                console.log(res);
-                const rawToken = res.data.accessToken;
-                const tokenDecode = jwtDecode(rawToken)
-                console.log(tokenDecode)
-                toast.success("Welcome")
-                if (tokenDecode.role) {
-                    // console.log("L1")
-                    if (tokenDecode.role === "User") {
-                        setTimeout(() => {
-                            navigate('/userdashboard')
-                        }, 2000)
-                    }
-                    else if (tokenDecode.role === "Admin") {
-                        navigate('/admin/dashboard')
-                    }
-                    else {
-                        console.log("Error");
-                    }
-                }
+  const checkRedirect = async () => {
+    if (authService.getToken() !== null && authService.isLoggedIn()) {
+        const userRole = authService.getUserRole();
+        if (userRole !== null) {
+            if (userRole === "Admin") {
+                navigate('/admin/dashboard');
+            } else if (userRole === "User") {
+                navigate('/user/dashboard');
+            } else {
+                toast.error("Something went wrong");
             }
-            else if (res.status === 403) {
-                console.log("invalid email/password");
-                toast.error("invalid email/password")
-            }
-        }
-        catch (e) {
-            console.log(e);
         }
     }
+};
 
+useEffect(() => {
+    checkRedirect();
+}, []);
+
+const emailRef = useRef(null)
+const passwordRef = useRef(null)
+const handleLogin = async (e) => {
+    e.preventDefault();
+    const res = await authService.SignIn(emailRef.current.value, passwordRef.current.value)
+    if (res.status === 200) {
+        authService.setToken(res.data.accessToken)
+        toast.success("Welcome")
+        setTimeout(() => {
+            checkRedirect();
+        }, 3000)
+
+    }
+};
   return (
     <>
     <div className="flex items-center justify-center h-screen">

@@ -1,20 +1,23 @@
-import axios from "axios";
+import axios from 'axios';
+
+const baseURL = 'http://localhost:8080/api';
+const axiosInstance = axios.create({
+    baseURL,
+});
+
+axiosInstance.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+const SignUp = (name, email, phone, address, password) => axiosInstance.post('/auth/register', { name, email, phone, address, password }); // Remove URI concatenation
 
 
-let jwtToken = localStorage.getItem(`Token`);
-let authHeader = `Bearer ${jwtToken}`;
-
-export const HEADERS = {
-    'Authorization': authHeader,
-    'Content-Type': 'application/json',
-}
-
-const URI = 'http://localhost:8080/api'
-
-
-const SignIn = (email, password) => axios.post(URI + '/auth/login', { email,password })
-const Signup = (name, email, phone, address, password) => axios.post(URI + '/auth/register', { name, email, phone, address, password })
-
-
-
-export { SignIn,Signup}
+export { axiosInstance, SignUp }

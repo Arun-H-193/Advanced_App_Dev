@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Signup } from '../../services/api';
+import { SignUp } from '../../services/api';
 import toast, { Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ export const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(registerdata);
-        const res = await Signup(registerdata.name, registerdata.email, registerdata.phone, registerdata.address, registerdata.password);
+        const res = await SignUp(registerdata.name, registerdata.email, registerdata.phone, registerdata.address, registerdata.password);
 
         if (res.data==="User registered successfully.") {
 
@@ -30,6 +30,7 @@ export const SignUp = () => {
         }
         else {
             toast.error(res.data)
+            // console.log(res.data)
         }
 
     }

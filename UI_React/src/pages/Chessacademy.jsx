@@ -41,7 +41,7 @@ const ChessAcademy = () => {
             <a href="#" className="text-blue-600 hover:underline">Enroll Now</a>
           </div>
         </div>
-        <FAQ/>
+       
       </main>
       
     </div>
